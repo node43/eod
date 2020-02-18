@@ -1,0 +1,92 @@
+/* * */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: normal;
+    list-style-type: none;}
+img {
+    max-width: 100%;
+    padding: 1em 0 1em 0;}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #111111;
+    background-image: url(https://storage.googleapis.com/webdesignledger.pub.network/LaT/edd/2016/02/seamless-background-textures-14.jpg);
+    background-repeat: repeat;
+    color: #fefbf8;
+    font-size: 1.2em;}
+/* nav */
+nav {
+    margin: 2em;
+    position: fixed;
+    top: 0em;
+    z-index: 100;
+    font-size: 0.75em;
+    background-color: rgba(11, 11, 11, 0.95);}
+nav a {
+    display: block;
+    text-decoration: none;
+    color: #fefbf8;
+    padding: 0.3em;}
+nav a:hover {
+    color: #db9e85;}
+nav .active{
+    padding-left: 0.6em;
+    text-decoration: line-through;
+    color: grey;
+}
+nav .active:hover{
+    color: grey;
+}
+
+/* canvas */
+
+#c {
+    z-index: -1;
+}
+
+canvas {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    touch-action: 0;
+    z-index: inherit;
+}
+
+/* main */
+    main {
+        position: absolute;
+        left: 10em;
+        font-family: monospace;
+        max-width: 64ch;
+        margin: 2em auto 0 auto;
+        padding: 1em 2em;
+        line-height: 1.2;
+        background-color: rgba(11, 11, 11, 0.85);
+        z-index: 80;
+    }
+    main h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.1em;
+    }
+    main span {
+        display: inline-block;
+        padding-top: 1.6em;
+    }
+
+/* footer */
+footer a {
+    display: block;
+    float: right;
+    font-size: 0.6em;
+    margin: 0.4em;
+    margin-top: 1.6em;
+    background-color: black;
+    color: #595148;
+    text-decoration: none;
+}
+
