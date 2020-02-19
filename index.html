@@ -1,47 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entity One Default</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BJS_test01</title>
+
+    <!-- css -->
+    <style>
+        html,body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+        
+    </style>
+    <!-- end of css -->
+
     <!-- script for loading babylon -->
     <script src="https://preview.babylonjs.com/babylon.js"></script>
     <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
     <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
     <!-- end of loading -->
+
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a class="active" href="index.html">home</a></li>
-            <li><a href="about.html">about</a></li>
-            <li><a href="archive.html">archive</a></li>
-            <li><a href="manifest.html">manifest</a></li>
-            <li><a href="gallery.html">gallery</a></li>
-        </ul>
-    </nav>
 
-    
-    <div id="C"><canvas id="renderCanvas" touch-action="none"></canvas> <!-- touch-action="none" for best results from PEP-->
-    </div>
-    
+    <canvas id="renderCanvas" touch-action="none"></canvas> <!-- touch-action="none" for best results from PEP-->
+
     <!-- actual bjs script -->
     <script>
+        
+        /******* Loading screen section ******/
+        BABYLON.DefaultLoadingScreen.DefaultLogoUrl = "img/logo.svg";
+        BABYLON.DefaultLoadingScreen.DefaultSpinnerUrl = "img/spinner.svg"
 
         var canvas = document.getElementById("renderCanvas"); // Get the canvas element
         var engine = new BABYLON.Engine(canvas, true) //Generate the BABYLON 3D engine
 
+
+
+
         /******* Add the create scene function ******/
         var createScene = function() {
- 
+
             // Create the scene space
             var scene = new BABYLON.Scene(engine);
             scene.clearColor = new BABYLON.Color3(0, 0, 0);
-            scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
-            scene.fogDensity = 0.006;
-            scene.fogStart = 10000;
-            scene.fogEnd = 100000;
 
             // Add a camera to the scene and attach it to the canvas
             var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI /2, Math.PI / 2, 800, new BABYLON.Vector3.Zero(), scene);
@@ -63,6 +78,7 @@
            
             var asset = BABYLON.SceneLoader.Append("./models/", "entity_one_3dtest.gltf");
 
+
             return scene;
         };
         /******* End of the create scene function *****/
@@ -83,10 +99,6 @@
 
     
     </script>
-    
-    <footer>
-        <a href="https://instagram.com/_thenode43"><p>code by <img src="" alt="node43"></p></a>
-    </footer>
     
 </body>
 </html>
