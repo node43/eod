@@ -57,10 +57,7 @@
         BABYLON.DefaultLoadingScreen.DefaultSpinnerUrl = "img/spinner.svg"
 
         var canvas = document.getElementById("renderCanvas"); // Get the canvas element
-        var engine = new BABYLON.Engine(canvas, true) //Generate the BABYLON 3D engine
-
-
-
+        var engine = new BABYLON.Engine(canvas, true); //Generate the BABYLON 3D engine
 
         /******* Add the create scene function ******/
         var createScene = function() {
@@ -70,9 +67,11 @@
             scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
             // Add a camera to the scene and attach it to the canvas
-            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI /2, Math.PI / 2, 800, new BABYLON.Vector3.Zero(), scene);
+            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 800, new BABYLON.Vector3.Zero(), scene);
             camera.attachControl(canvas, true);
             camera.useAutoRotationBehavior = true;
+            camera._autoRotationBehavior._idleRotationWaitTime = 0;
+            //camera.setTarget(scene.me)
 
             // Add lights to the scene
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
@@ -89,7 +88,6 @@
            
             var asset = BABYLON.SceneLoader.Append("./models/", "entity_one_3dtest.gltf");
 
-
             return scene;
         };
         /******* End of the create scene function *****/
@@ -105,6 +103,12 @@
         window.addEventListener("resize", function() {
             engine.resize();
         });
+        window.addEventListener("pointermove", function(e){
+            scene.cameras[0].setPosition(new BABYLON.Vector3(Math.PI/2+e.clientX/2, Math.PI/2+e.clientY, 800));
+        });
+
+        console.log(scene.cameras[0]);
+
 
         
 
