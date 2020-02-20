@@ -81,6 +81,11 @@ canvas {
         color: #fefbf8;
         text-decoration: underline;
     }
+    main span a:hover {
+        color: #111111;
+        text-decoration: none;
+        background-color: #fefbf8;
+    }
 
 /* footer */
 footer a {
