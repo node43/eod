@@ -113,7 +113,7 @@ footer a p {
     }
 
     main {
-        position: absolute;
+        position: relative;
         left: 0;
         padding: 4px;
         font-size: 0.9em;
