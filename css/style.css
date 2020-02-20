@@ -91,6 +91,11 @@ footer a {
     text-decoration: none;
 }
 
+footer a p {
+    display: inline-block;
+    float: left;
+}
+
 
 @media (max-width: 530px) {
     nav {
@@ -117,5 +122,21 @@ footer a {
 
     main span {
         padding-top: 0.6em;
+    }
+
+    /* footer */
+    footer a {
+        display: block;
+        font-size: 0.55em;
+        margin: 0;
+        margin-top: 0;
+        background-color: black;
+        color: #595148;
+        text-decoration: none;
+    }
+
+    footer a p {
+        display: block;
+        float: none;
     }
 }
