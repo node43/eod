@@ -90,3 +90,32 @@ footer a {
     color: #595148;
     text-decoration: none;
 }
+
+
+@media (max-width: 530px) {
+    nav {
+        float: left;
+        display: block;
+        margin: 0 auto 0 auto;
+    }
+    nav li {
+        display: inline;
+    }
+    nav a {
+        display: block;
+        float: left;
+        white-space: nowrap;
+    }
+
+    main {
+        position: absolute;
+        left: 0;
+        padding: 4px;
+        font-size: 0.9em;
+        margin-top: 2.6em;
+    }
+
+    main span {
+        padding-top: 0.6em;
+    }
+}
