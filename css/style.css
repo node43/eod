@@ -13,6 +13,7 @@ body {
     background-color: #111111;
     background-image: url(https://storage.googleapis.com/webdesignledger.pub.network/LaT/edd/2016/02/seamless-background-textures-14.jpg);
     background-repeat: repeat;
+    background-attachment: fixed;
     color: #fefbf8;
     font-size: 1em;}
 /* nav */
