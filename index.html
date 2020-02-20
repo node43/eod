@@ -57,9 +57,6 @@
     
     <!-- actual bjs script -->
     <script>
-        
-        if (window.matchMedia("(min-width: 530px)").matches) {
-        /* The viewport is less than, or equal to, 530 pixels wide */
         /******* Loading screen section ******/
         BABYLON.DefaultLoadingScreen.DefaultLogoUrl = "img/logo.svg";
         BABYLON.DefaultLoadingScreen.DefaultSpinnerUrl = "img/spinner.svg"
@@ -126,15 +123,7 @@
         });
         window.addEventListener("pointermove", function(e){
              scene.cameras[0].setPosition(new BABYLON.Vector3(Math.PI/2+e.clientX/2, Math.PI/2+e.clientY, 800));
-        });
-        } else {
-            
-            /* The viewport is greater than 530 pixels wide */
-            var elem = document.getElementById('renderCanvas');
-            elem.parentNode.removeChild(elem);
-        };
-
-        
+        });        
 
     </script>
 
