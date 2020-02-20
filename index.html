@@ -10,19 +10,10 @@
 
     <!-- css -->
     <style>
-        html,body {
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
 
         #renderCanvas {
             width: 100%;
             height: 100%;
-            touch-action: none;
         }
         
     </style>
@@ -49,7 +40,7 @@
 
     <main>
         <h1>Æ.O.D x NONA present: <br>THYME /CZ/, Racine /CA/, Izanasz /CZ/</h1>
-        <a href="https://www.facebook.com/events/2561881850589873/"></a><img src="img/event01.jpg" alt=""></a>
+        <a href="https://www.facebook.com/events/2561881850589873/"><img src="img/event01.jpg" alt=""></a>
         <span>První z edice událostí Æntity.one.Default, která proběhne v prostorách Vila Löw-Beer v Brně. Ve spolupráci s labelem Genot Centre se nám podařilo přizvat jedinečného francouzsko-kanadského producenta Racine, který představí v Berlíně nedávno pokřtěné čerstvé album. Lokální scénu zastoupí projekt THYME sourozenců Johana Klára Kratochvílová a Martin Dominik Kratochvíl, v rámci večera proběhne křest jejich nového vinylu Thyme. Třetím jménem večera bude Izanasz, multimediální umělec z Prahy.</span>
         <span>Celou událost bude dotvářet umělecká instalace Kristýna Sidlárová aka Sida100, která bude zpřístupněna už od úterý 25. do 28. února v hlavním sále Vila Löw-Beer v Brně. </span>
         <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora accusantium in eum magni inventore ea recusandae, blanditiis id dolorum minus fugiat itaque aliquid maxime iusto quod voluptate sunt impedit sint.</span>
@@ -62,7 +53,7 @@
     </main>
     
 
-    <canvas id="renderCanvas"></canvas> <!-- touch-action="none" for best results from PEP-->
+   <canvas id="renderCanvas" touch-action="none"></canvas> <!--touch-action="none" for best results from PEP -->
     
     <!-- actual bjs script -->
     <script>
@@ -88,7 +79,6 @@
             camera.attachControl(canvas, true);
             camera.useAutoRotationBehavior = true;
             camera._autoRotationBehavior._idleRotationWaitTime = 0;
-            //camera.setTarget(scene.me)
 
             // Add lights to the scene
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
@@ -138,14 +128,15 @@
              scene.cameras[0].setPosition(new BABYLON.Vector3(Math.PI/2+e.clientX/2, Math.PI/2+e.clientY, 800));
         });
         } else {
+            
+            /* The viewport is greater than 530 pixels wide */
             var elem = document.getElementById('renderCanvas');
             elem.parentNode.removeChild(elem);
-        /* The viewport is greater than 700 pixels wide */
         };
 
         
 
     </script>
-    
+
 </body>
 </html>
