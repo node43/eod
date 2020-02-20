@@ -55,7 +55,7 @@ canvas {
     margin: 0;
     padding: 0;
     touch-action: 0;
-    z-index: inherit;
+    z-index: -1;
 }
 
 /* main */
@@ -118,6 +118,7 @@ footer a p {
         padding: 4px;
         font-size: 0.9em;
         margin-top: 2.6em;
+        overflow: visible;
     }
 
     main span {
