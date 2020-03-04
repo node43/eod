@@ -29,9 +29,14 @@
 
 <body>
     
-    <audio  volume="0.01" autoplay>
+    <audio id="music" volume="0.1" autoplay>
         <source src="audio/audio01.mp3">
     </audio>
+    <script>
+        var audio = document.getElementById("music");
+        audio.volume = 0.2;
+    </script>
+    
     <nav>
         <ul>
             <li><a class="active" href="index.html">home</a></li>
