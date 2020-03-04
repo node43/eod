@@ -26,15 +26,17 @@
     <!-- end of loading -->
 
 </head>
-<body>
 
+<body>
+    
+    <audio autoplay>
+        <source src="audio/audio01.mp3">
+    </audio>
     <nav>
         <ul>
             <li><a class="active" href="index.html">home</a></li>
             <li><a href="about.html">about</a></li>
-            <li><a href="archive.html">archive</a></li>
-            <li><a href="manifest.html">manifest</a></li>
-            <li><a href="gallery.html">gallery</a></li>
+            <li><a href="event01.html">archive</a></li>
         </ul>
     </nav>
    
@@ -55,42 +57,74 @@
 
             // Create the scene space
             var scene = new BABYLON.Scene(engine);
-            scene.clearColor = new BABYLON.Color3(0, 0, 0);
+            scene.clearColor = new BABYLON.Texture("img/background01.jpg", scene);
+
+            var clickbox = BABYLON.MeshBuilder.CreateBox("clickbox", {size:1100.0}, scene);
+            var clickboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+            clickboxMaterial.backFaceCulling = true;
+            clickboxMaterial.diffuseColor = new BABYLON.Color3(0,0,0);
+            clickboxMaterial.alpha = 0;
+            clickbox.material = clickboxMaterial;
+
+
+            var skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {size:8450.0}, scene);
+            var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+            skyboxMaterial.backFaceCulling = false;
+            skyboxMaterial.reflectionTexture = new BABYLON.Texture("img/background01.jpg", scene);
+            skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+            skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+            skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.PROJECTION_MODE;
+            skybox.material = skyboxMaterial;
 
             // Add a camera to the scene and attach it to the canvas
-            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 1800, new BABYLON.Vector3.Zero(), scene);
+            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 4, Math.PI / 2, 4000, new BABYLON.Vector3.Zero(), scene);
             camera.attachControl(canvas, true);
             camera.useAutoRotationBehavior = true;
             camera._autoRotationBehavior._idleRotationWaitTime = 0;
+            camera.allowUpsideDown = true;
 
             // Add lights to the scene
             var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
-            light1.diffuse = new BABYLON.Color3(3, 15, 50);
+            light1.diffuse = new BABYLON.Color3(3, 3, 3);
 	        light1.specular = new BABYLON.Color3(1, 0, 1);
             light1.groundColor = new BABYLON.Color3(80, 0.1, 0.8);
             
 
             var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 10, 10), scene);
-            light2.diffuse = new BABYLON.Color3(200, 100, 100)
-            light2.intensity = 100000;
-            light2.range = 20000;
+            light2.diffuse = new BABYLON.Color3(200, 100, 100);
+            light2.intensity = 10000;
+            light2.range = 200000;
 
 
             var light3 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1000, 100), scene);
-            light3.diffuse = new BABYLON.Color3(10, 6000, 3000)
+            light3.diffuse = new BABYLON.Color3(200, 600, 1000);
             light3.intensity = 20000;
             light3.range = 20000;
 
-            var light3 = new BABYLON.PointLight("light2", new BABYLON.Vector3(20, -100, -100), scene);
-            light3.diffuse = new BABYLON.Color3(60, 20, 100)
-            light3.intensity = 20000;
-            light3.range = 20000;
+            var light4 = new BABYLON.PointLight("light4", new BABYLON.Vector3(0, 100, 100), scene);
+            light4.diffuse = new BABYLON.Color3(6, 50, 10);
+            light4.intensity = 5000;
+            light4.range = 20000;
 
-            var godrays = new BABYLON.VolumetricLightScatteringPostProcess('godrays', 1.0, camera, null, 100, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine, false);
+            //var godrays = new BABYLON.VolumetricLightScatteringPostProcess('godrays', 1.0, camera, null, 10000, BABYLON.Texture.BILINEAR_SAMPLINGMODE, engine, false);
             // Add and manipulate meshes in the scene
             //var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
            
-            var asset = BABYLON.SceneLoader.Append("./models/", "entity_one_3dtest.gltf");
+            var asset = BABYLON.SceneLoader.Append("./models/", "entity_one_3dtest2.glb");
+            
+            clickbox.actionManager = new BABYLON.ActionManager(scene);
+    
+            clickbox.actionManager.registerAction(
+                new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickTrigger, 
+                    function(event){
+                        var pickedMesh = event.meshUnderPointer; 
+                        window.location= ("event01.html");
+            })
+);
+
+            
+
+            
 
             return scene;
         };
@@ -107,9 +141,11 @@
         window.addEventListener("resize", function() {
             engine.resize();
         });
-        window.addEventListener("pointermove", function(e){
-             scene.cameras[0].setPosition(new BABYLON.Vector3(Math.PI/2+e.clientX/2, Math.PI/2+e.clientY, 800));
-        });        
+        
+        
+        // window.addEventListener("pointermove", function(e){
+        //      scene.cameras[0].setPosition(new BABYLON.Vector3(Math.PI/2+e.clientX/2, Math.PI/2+e.clientY, 800));
+        // });        
 
     </script>
 
