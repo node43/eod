@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Messapia-Bold'; /*a name to be used later*/
+    src: url(../fonts/Messapia-Bold.otf); /*URL to font*/
+}
+
 /* * */
 * {
     margin: 0;
@@ -9,7 +14,7 @@ img {
     max-width: 100%;
     padding: 1em 0 1em 0;}
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Messapia-Bold;
     background-color: #111111;
     background-image: url(../img/bg.jpg);
     background-repeat: repeat;
@@ -22,8 +27,7 @@ nav {
     position: fixed;
     top: 0em;
     z-index: 70;
-    font-size: 0.85em;
-    background-color: rgba(11, 11, 11, 0.95);}
+    font-size: 0.85em;}
 nav a {
     display: block;
     text-decoration: none;
@@ -33,7 +37,6 @@ nav a:hover {
     color: #db9e85;}
 nav .active{
     padding-left: 0.6em;
-    text-decoration: line-through;
     color: grey;
 }
 nav .active:hover{
@@ -60,12 +63,11 @@ canvas {
     main {
         position: absolute;
         left: 10em;
-        font-family: monospace;
+        font-family: arial;
         max-width: 64ch;
         margin: 2em auto 0 auto;
         padding: 1em 2em;
         line-height: 1.4;
-        background-color: rgba(11, 11, 11, 0.85);
         z-index: 80;
     }
     main h1 {
@@ -86,6 +88,8 @@ canvas {
         text-decoration: none;
         background-color: #fefbf8;
     }
+
+
 
 /* footer */
 footer a {
